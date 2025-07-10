@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
         </CardHeader>
         <CardContent className="prose prose-stone dark:prose-invert max-w-none">
           <p>
-            Welcome to ReadRight OCR. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application.
+            Welcome to ClarifAI. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application.
           </p>
 
           <h2>1. Information We Collect</h2>

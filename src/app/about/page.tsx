@@ -7,9 +7,9 @@ export default function AboutPage() {
     <div className="container mx-auto p-4 md:p-6">
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl md:text-4xl font-bold">About ReadRight OCR</CardTitle>
+          <CardTitle className="text-3xl md:text-4xl font-bold">About ClarifAI</CardTitle>
           <p className="text-muted-foreground mt-2 text-lg">
-            Digitizing the handwritten world.
+            From Blurity To Clarity, Complexity To Simplicity. We Turn Chaos To Gloss Flawlessly.
           </p>
         </CardHeader>
         <CardContent className="space-y-12">
@@ -17,7 +17,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
               <p className="text-muted-foreground leading-relaxed">
-                At ReadRight OCR, our mission is to bridge the gap between physical documents and the digital world. We believe that valuable information locked in handwritten notes, forms, and archives should be easily accessible. Our advanced AI is designed to accurately transcribe even the most challenging handwriting, making data entry, archiving, and information retrieval effortless and efficient for everyone.
+                At ClarifAI, our mission is to bridge the gap between physical documents and the digital world. We believe that valuable information locked in handwritten notes, forms, and archives should be easily accessible. Our advanced AI is designed to accurately transcribe even the most challenging handwriting, making data entry, archiving, and information retrieval effortless and efficient for everyone.
               </p>
             </div>
             <div className="flex justify-center">
