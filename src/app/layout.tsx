@@ -1,12 +1,12 @@
 import type {Metadata} from 'next';
 import Link from 'next/link';
-import { BrainCircuit } from 'lucide-react';
+import { ScanText } from 'lucide-react';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'VisualSage',
-  description: 'AI-powered image analysis and visual search',
+  title: 'ReadRight OCR',
+  description: 'AI-powered OCR to digitize handwritten text',
 };
 
 export default function RootLayout({
@@ -26,8 +26,8 @@ export default function RootLayout({
           <header className="p-4 md:p-6 border-b bg-card/80 backdrop-blur-sm sticky top-0 z-10">
             <div className="container mx-auto flex items-center justify-between gap-3">
               <Link href="/" className="flex items-center gap-3">
-                <BrainCircuit className="h-8 w-8 text-primary" />
-                <h1 className="text-2xl md:text-3xl font-bold font-headline">VisualSage</h1>
+                <ScanText className="h-8 w-8 text-primary" />
+                <h1 className="text-2xl md:text-3xl font-bold font-headline">ReadRight OCR</h1>
               </Link>
             </div>
           </header>
@@ -43,7 +43,7 @@ export default function RootLayout({
                 <Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link>
                 <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
               </div>
-              <p>&copy; {new Date().getFullYear()} VisualSage. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} ReadRight OCR. All rights reserved.</p>
               <p className="mt-1">Powered by GenAI</p>
             </div>
           </footer>

@@ -2,25 +2,22 @@
 
 import { useState, useCallback } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { analyzeImage, type AnalyzeImageOutput } from '@/ai/flows/analyze-image';
-import { generateSearchSuggestions, type GenerateSearchSuggestionsOutput } from '@/ai/flows/generate-search-suggestions';
+import { extractTextFromImage, type ExtractTextFromImageOutput } from '@/ai/flows/extract-text-from-image';
 
-import { ImageUploader } from '@/components/visual-sage/image-uploader';
-import { AnalysisResults } from '@/components/visual-sage/analysis-results';
-import { ImageGallery } from '@/components/visual-sage/image-gallery';
+import { ImageUploader } from '@/components/ocr/image-uploader';
+import { OcrResults } from '@/components/ocr/ocr-results';
+import { ImageGallery } from '@/components/ocr/image-gallery';
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState<string | null>(null);
-  const [analysis, setAnalysis] = useState<AnalyzeImageOutput | null>(null);
-  const [suggestions, setSuggestions] = useState<GenerateSearchSuggestionsOutput | null>(null);
+  const [ocrResult, setOcrResult] = useState<ExtractTextFromImageOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [imageCache, setImageCache] = useState<string[]>([]);
   const { toast } = useToast();
 
-  const handleAnalysis = useCallback(async (imageUri: string) => {
+  const handleExtraction = useCallback(async (imageUri: string) => {
     setIsLoading(true);
-    setAnalysis(null);
-    setSuggestions(null);
+    setOcrResult(null);
     setCurrentImage(imageUri);
 
     if (!imageCache.includes(imageUri)) {
@@ -28,17 +25,13 @@ export default function Home() {
     }
 
     try {
-      const [analysisResult, suggestionsResult] = await Promise.all([
-        analyzeImage({ photoDataUri: imageUri }),
-        generateSearchSuggestions({ photoDataUri: imageUri }),
-      ]);
-      setAnalysis(analysisResult);
-      setSuggestions(suggestionsResult);
+      const result = await extractTextFromImage({ photoDataUri: imageUri });
+      setOcrResult(result);
     } catch (error) {
-      console.error('AI analysis failed:', error);
+      console.error('OCR failed:', error);
       toast({
-        title: 'Analysis Failed',
-        description: 'There was an error analyzing the image. Please try again.',
+        title: 'Extraction Failed',
+        description: 'There was an error extracting text from the image. Please try again.',
         variant: 'destructive',
       });
     } finally {
@@ -51,18 +44,17 @@ export default function Home() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
         <div className="lg:col-span-2 space-y-8">
           <div className="p-6 rounded-lg bg-card border">
-              <h2 className="text-xl font-semibold mb-2">Upload an Image</h2>
-              <p className="text-muted-foreground mb-6">Let our AI analyze your image and provide insights.</p>
-              <ImageUploader onImageUpload={handleAnalysis} disabled={isLoading} />
+              <h2 className="text-xl font-semibold mb-2">Upload Document</h2>
+              <p className="text-muted-foreground mb-6">Scan handwritten notes, forms, or complex texts and convert them to digital format.</p>
+              <ImageUploader onImageUpload={handleExtraction} disabled={isLoading} />
           </div>
-          <ImageGallery images={imageCache} onImageSelect={handleAnalysis} currentImage={currentImage} />
+          <ImageGallery images={imageCache} onImageSelect={handleExtraction} currentImage={currentImage} />
         </div>
 
         <div className="lg:col-span-3">
-          <AnalysisResults 
+          <OcrResults 
             image={currentImage}
-            analysis={analysis} 
-            suggestions={suggestions} 
+            result={ocrResult} 
             isLoading={isLoading} 
           />
         </div>

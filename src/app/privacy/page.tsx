@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
         </CardHeader>
         <CardContent className="prose prose-stone dark:prose-invert max-w-none">
           <p>
-            Welcome to VisualSage. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application.
+            Welcome to ReadRight OCR. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application.
           </p>
 
           <h2>1. Information We Collect</h2>
@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
           </p>
           <ul>
             <li>
-              <strong>Uploaded Images:</strong> We temporarily process the images you upload to provide the analysis service. We do not store your images on our servers after the analysis is complete. The image data is sent to a third-party AI service for processing.
+              <strong>Uploaded Images:</strong> We temporarily process the images you upload to provide the OCR service. We do not store your images on our servers after the analysis is complete. The image data is sent to a third-party AI service for processing.
             </li>
             <li>
               <strong>Usage Data:</strong> We may automatically collect certain information when you access the Service, such as your IP address, browser type, operating system, and information about your use of the Service.

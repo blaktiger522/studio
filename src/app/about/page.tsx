@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Users, Target, Eye } from 'lucide-react';
+import { Users, Target, Eye, ScanLine } from 'lucide-react';
 import Image from 'next/image';
 
 export default function AboutPage() {
@@ -7,9 +7,9 @@ export default function AboutPage() {
     <div className="container mx-auto p-4 md:p-6">
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl md:text-4xl font-bold">About VisualSage</CardTitle>
+          <CardTitle className="text-3xl md:text-4xl font-bold">About ReadRight OCR</CardTitle>
           <p className="text-muted-foreground mt-2 text-lg">
-            Unveiling the stories behind your images.
+            Digitizing the handwritten world.
           </p>
         </CardHeader>
         <CardContent className="space-y-12">
@@ -17,7 +17,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
               <p className="text-muted-foreground leading-relaxed">
-                At VisualSage, our mission is to empower everyone to understand and interact with the visual world in a more meaningful way. We believe that every image has a story to tell, and our advanced AI is designed to unlock that narrative. By providing insightful analysis and intuitive search tools, we aim to make visual information more accessible, understandable, and useful for all.
+                At ReadRight OCR, our mission is to bridge the gap between physical documents and the digital world. We believe that valuable information locked in handwritten notes, forms, and archives should be easily accessible. Our advanced AI is designed to accurately transcribe even the most challenging handwriting, making data entry, archiving, and information retrieval effortless and efficient for everyone.
               </p>
             </div>
             <div className="flex justify-center">
@@ -38,12 +38,12 @@ export default function AboutPage() {
               <div className="text-center p-6 bg-card rounded-lg border">
                 <div className="flex justify-center mb-4">
                   <div className="p-3 bg-primary/10 rounded-full">
-                    <Eye className="w-8 h-8 text-primary" />
+                    <ScanLine className="w-8 h-8 text-primary" />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Image Analysis</h3>
+                <h3 className="text-xl font-semibold mb-2">Handwriting Recognition</h3>
                 <p className="text-muted-foreground">
-                  Our core technology analyzes images to provide detailed summaries and identify key elements.
+                  Our core technology uses AI to accurately convert messy handwriting into clean, digital text.
                 </p>
               </div>
               <div className="text-center p-6 bg-card rounded-lg border">
@@ -52,9 +52,9 @@ export default function AboutPage() {
                     <Users className="w-8 h-8 text-primary" />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Visual Search</h3>
+                <h3 className="text-xl font-semibold mb-2">Complex Document AI</h3>
                 <p className="text-muted-foreground">
-                  We generate intelligent search suggestions to help you explore and discover related visual content.
+                  We process complex layouts, tables, and forms, preserving the structure of your original documents.
                 </p>
               </div>
               <div className="text-center p-6 bg-card rounded-lg border">
@@ -63,9 +63,9 @@ export default function AboutPage() {
                     <Target className="w-8 h-8 text-primary" />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Accessibility Focus</h3>
+                <h3 className="text-xl font-semibold mb-2">Developer Friendly</h3>
                 <p className="text-muted-foreground">
-                  We are committed to making visual content more accessible for users with visual impairments.
+                  Our service is built to be easily integrated into your own applications and workflows.
                 </p>
               </div>
             </div>

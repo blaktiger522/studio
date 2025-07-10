@@ -79,7 +79,7 @@ export function ImageUploader({ onImageUpload, disabled }: ImageUploaderProps) {
         } ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
       >
         <UploadCloud className="w-16 h-16 mx-auto text-muted-foreground" />
-        <p className="mt-4 text-lg font-semibold">Drag & drop your image here</p>
+        <p className="mt-4 text-lg font-semibold">Drag & drop your document here</p>
         <p className="mt-1 text-sm text-muted-foreground">or</p>
         <Button asChild variant="outline" className="mt-4" disabled={disabled}>
           <label htmlFor="image-upload" className={disabled ? 'cursor-not-allowed' : 'cursor-pointer'}>

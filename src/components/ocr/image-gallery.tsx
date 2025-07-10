@@ -19,7 +19,7 @@ export function ImageGallery({ images, onImageSelect, currentImage }: ImageGalle
       <CardHeader>
         <div className="flex items-center gap-3">
           <History className="w-6 h-6 text-primary" />
-          <CardTitle>Recent Images</CardTitle>
+          <CardTitle>Recent Documents</CardTitle>
         </div>
       </CardHeader>
       <CardContent>
