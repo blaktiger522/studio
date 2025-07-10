@@ -7,6 +7,9 @@ import { extractTextFromImage, type ExtractTextFromImageOutput } from '@/ai/flow
 import { ImageUploader } from '@/components/ocr/image-uploader';
 import { OcrResults } from '@/components/ocr/ocr-results';
 import { ImageGallery } from '@/components/ocr/image-gallery';
+import { CameraUploader } from '@/components/ocr/camera-uploader';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { UploadCloud, Camera } from 'lucide-react';
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState<string | null>(null);
@@ -44,9 +47,22 @@ export default function Home() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
         <div className="lg:col-span-2 space-y-8">
           <div className="p-6 rounded-lg bg-card border">
-              <h2 className="text-xl font-semibold mb-2">Upload Document</h2>
+              <h2 className="text-xl font-semibold mb-2">Upload or Capture</h2>
               <p className="text-muted-foreground mb-6">Scan handwritten notes, forms, or complex texts and convert them to digital format.</p>
-              <ImageUploader onImageUpload={handleExtraction} disabled={isLoading} />
+              
+              <Tabs defaultValue="file">
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="file"><UploadCloud className="mr-2" /> File Upload</TabsTrigger>
+                  <TabsTrigger value="camera"><Camera className="mr-2" /> Camera</TabsTrigger>
+                </TabsList>
+                <TabsContent value="file" className="mt-6">
+                  <ImageUploader onImageUpload={handleExtraction} disabled={isLoading} />
+                </TabsContent>
+                <TabsContent value="camera" className="mt-6">
+                  <CameraUploader onImageCapture={handleExtraction} disabled={isLoading} />
+                </TabsContent>
+              </Tabs>
+
           </div>
           <ImageGallery images={imageCache} onImageSelect={handleExtraction} currentImage={currentImage} />
         </div>
