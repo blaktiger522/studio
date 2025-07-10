@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: 'ClarifAI',
-  description: 'From Blurity To Clarity, Complexity To Simplicity. We Turn Chaos To Gloss Flawlessly',
+  description: 'From Blurity To Clarity. Complexity To Simplicity. We Turn Chaos To Gloss Flawlessly.',
 };
 
 export default function RootLayout({

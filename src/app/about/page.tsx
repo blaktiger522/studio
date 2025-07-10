@@ -9,7 +9,7 @@ export default function AboutPage() {
         <CardHeader className="text-center">
           <CardTitle className="text-3xl md:text-4xl font-bold">About ClarifAI</CardTitle>
           <p className="text-muted-foreground mt-2 text-lg">
-            From Blurity To Clarity, Complexity To Simplicity. We Turn Chaos To Gloss Flawlessly.
+            From Blurity To Clarity<br/>Complexity To Simplicity<br/>We Turn Chaos To Gloss Flawlessly
           </p>
         </CardHeader>
         <CardContent className="space-y-12">
