@@ -138,7 +138,7 @@ export default function HomePage() {
 
         <div className="relative w-full h-[240px] rounded-xl overflow-hidden shadow-lg bg-muted flex items-center justify-center">
             <Image 
-              src="/api/image"
+              src="https://placehold.co/600x240.png"
               alt="Handwritten notes" 
               width={600}
               height={240}
