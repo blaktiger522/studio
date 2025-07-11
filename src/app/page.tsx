@@ -13,7 +13,7 @@ import { CameraUploader } from '@/components/ocr/camera-uploader';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import Link from 'next/link';
 
-import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, HomeIcon, History } from 'lucide-react';
+import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, HomeIcon, History, Info, Mail, Shield } from 'lucide-react';
 import { ImageCropper } from '@/components/ocr/image-cropper';
 
 const features = [
@@ -214,6 +214,22 @@ export default function HomePage() {
             </div>
           </>
         )}
+         <footer className="w-full pt-8 mt-8 border-t border-gray-200 dark:border-gray-800">
+          <div className="container mx-auto text-center text-gray-500 dark:text-gray-400">
+            <div className="flex justify-center gap-6 mb-4">
+              <Link href="/about" className="text-sm hover:text-primary transition-colors">
+                <Info className="inline-block mr-1 h-4 w-4" /> About Us
+              </Link>
+              <Link href="/contact" className="text-sm hover:text-primary transition-colors">
+                <Mail className="inline-block mr-1 h-4 w-4" /> Contact Us
+              </Link>
+              <Link href="/privacy" className="text-sm hover:text-primary transition-colors">
+                <Shield className="inline-block mr-1 h-4 w-4" /> Privacy Policy
+              </Link>
+            </div>
+            <p className="text-xs">&copy; {new Date().getFullYear()} ClarifAI. All rights reserved.</p>
+          </div>
+        </footer>
       </main>
 
        <footer className="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 shadow-t-lg md:hidden">
