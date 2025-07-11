@@ -137,7 +137,7 @@ export default function Home() {
         </div>
 
         <div className="w-full h-[240px] rounded-xl overflow-hidden shadow-lg flex items-center justify-center bg-muted">
-            <Image src="https://placehold.co/600x240.png" alt="Handwritten note" width={600} height={240} className="object-cover" data-ai-hint="handwriting note" />
+            <Image src="https://placehold.co/600x240.png" alt="Handwritten note" width={600} height={240} className="object-cover" data-ai-hint="team holding signs" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
