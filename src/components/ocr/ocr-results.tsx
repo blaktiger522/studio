@@ -2,10 +2,9 @@ import type { ExtractTextFromImageOutput } from '@/ai/flows/extract-text-from-im
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { ClipboardCopy, FileText, ScanSearch, Type } from 'lucide-react';
+import { ClipboardCopy, FileText, Type } from 'lucide-react';
 import Image from 'next/image';
 import { useToast } from '@/hooks/use-toast';
-import { Textarea } from '../ui/textarea';
 
 interface OcrResultsProps {
   image: string | null;
@@ -79,15 +78,16 @@ export function OcrResults({ image, result, isLoading }: OcrResultsProps) {
                 </Button>
               </div>
               <CardDescription>
-                Review the extracted text below. You can edit it directly.
+                Review the extracted text below.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Textarea
-                className="w-full h-80 text-base bg-secondary/50 font-mono"
-                defaultValue={result.extractedText}
+              <div
+                className="w-full min-h-[10rem] p-4 text-base bg-secondary/50 font-mono rounded-md border border-input whitespace-pre-wrap break-words"
                 aria-label="Extracted Text"
-              />
+              >
+                {result.extractedText}
+              </div>
             </CardContent>
           </Card>
         )}

@@ -12,7 +12,7 @@ import { CameraUploader } from '@/components/ocr/camera-uploader';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import Link from 'next/link';
 
-import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, Home as HomeIcon, History, Settings, Bot } from 'lucide-react';
+import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, Home as HomeIcon, History } from 'lucide-react';
 
 const features = [
   {
@@ -87,7 +87,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-950">
       <main className="flex-grow container mx-auto p-4 md:p-6 space-y-8 pb-24">
         <div className="text-left space-y-2">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">Handwrite AI</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">ClarifAI</h1>
           <p className="text-gray-500 dark:text-gray-400 text-base md:text-lg">Transform handwritten notes into clear, digital text</p>
         </div>
 
@@ -179,14 +179,6 @@ export default function Home() {
           <button className="flex flex-col items-center justify-center gap-1 text-gray-400 dark:text-gray-500">
             <History className="w-6 h-6" />
             <span className="text-xs font-medium">History</span>
-          </button>
-          <button className="flex flex-col items-center justify-center gap-1 text-gray-400 dark:text-gray-500">
-            <Bot className="w-6 h-6" />
-            <span className="text-xs font-medium">Tools</span>
-          </button>
-           <button className="flex flex-col items-center justify-center gap-1 text-gray-400 dark:text-gray-500">
-            <Settings className="w-6 h-6" />
-            <span className="text-xs font-medium">Settings</span>
           </button>
         </nav>
       </footer>
