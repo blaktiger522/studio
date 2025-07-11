@@ -14,6 +14,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import Link from 'next/link';
 
 import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, HomeIcon, History } from 'lucide-react';
+import { ImageCropper } from '@/components/ocr/image-cropper';
 
 const features = [
   {
@@ -49,6 +50,7 @@ export default function Home() {
   const [ocrResult, setOcrResult] = useState<ExtractTextFromImageOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentImage, setCurrentImage] = useState<string | null>(null);
+  const [imageToCrop, setImageToCrop] = useState<string | undefined>(undefined);
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
@@ -89,14 +91,23 @@ export default function Home() {
     }
   }, [toast]);
 
+  const onImageSelected = (imageUri: string) => {
+    setImageToCrop(imageUri);
+    setIsCameraOpen(false);
+  };
+  
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        handleExtraction(e.target?.result as string);
+        onImageSelected(e.target?.result as string);
       };
       reader.readAsDataURL(file);
+    }
+    // Reset file input to allow selecting the same file again
+    if(event.target) {
+      event.target.value = "";
     }
   };
 
@@ -106,6 +117,17 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-950">
+       {imageToCrop && (
+        <ImageCropper
+          imageToCrop={imageToCrop}
+          onImageCropped={(croppedImage) => {
+            setImageToCrop(undefined);
+            if (croppedImage) {
+              handleExtraction(croppedImage);
+            }
+          }}
+        />
+      )}
       <main className="flex-grow container mx-auto p-4 md:p-6 space-y-8 pb-24">
         <div className="text-left space-y-2">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">ClarifAI</h1>
@@ -135,7 +157,7 @@ export default function Home() {
               <DialogHeader>
                 <DialogTitle>Capture Image</DialogTitle>
               </DialogHeader>
-              <CameraUploader onImageCapture={handleExtraction} disabled={isLoading} />
+              <CameraUploader onImageCapture={onImageSelected} disabled={isLoading} />
             </DialogContent>
           </Dialog>
          
