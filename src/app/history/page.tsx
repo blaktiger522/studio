@@ -69,7 +69,7 @@ export default function HistoryPage() {
       <main className="flex-grow container mx-auto p-4 md:p-6 pb-24">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl md:text-4xl font-bold">History</h1>
-          <Button asChild variant="ghost">
+          <Button asChild variant="ghost" className="hidden md:flex">
             <Link href="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Home
