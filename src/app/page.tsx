@@ -136,21 +136,8 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="w-full h-[240px] rounded-xl overflow-hidden shadow-lg">
-          <div className="grid grid-cols-3 grid-rows-2 gap-1 w-full h-full">
-            <div className="col-span-1 row-span-2 relative">
-                <Image src="https://placehold.co/200x240.png" alt="Handwritten note" layout="fill" objectFit="cover" className="brightness-90" data-ai-hint="handwriting note" />
-            </div>
-            <div className="col-span-2 row-span-1 relative">
-                <Image src="https://placehold.co/400x120.png" alt="Document with text" layout="fill" objectFit="cover" className="brightness-90" data-ai-hint="document text" />
-            </div>
-            <div className="col-span-1 row-span-1 relative">
-                <Image src="https://placehold.co/200x120.png" alt="Technical drawing" layout="fill" objectFit="cover" className="brightness-90" data-ai-hint="technical drawing" />
-            </div>
-            <div className="col-span-1 row-span-1 relative">
-                <Image src="https://placehold.co/200x120.png" alt="Old letter" layout="fill" objectFit="cover" className="brightness-90" data-ai-hint="old letter" />
-            </div>
-          </div>
+        <div className="w-full h-[240px] rounded-xl overflow-hidden shadow-lg flex items-center justify-center bg-muted">
+            <Image src="https://placehold.co/600x240.png" alt="Handwritten note" width={600} height={240} className="object-cover" data-ai-hint="handwriting note" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
