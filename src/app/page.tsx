@@ -136,14 +136,15 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden shadow-lg">
+        <div className="relative w-full h-[240px] rounded-xl overflow-hidden shadow-lg">
            <Image 
               src="https://placehold.co/600x240.png"
               alt="Handwritten notes on a board"
-              layout="fill"
-              objectFit="cover"
-              className="brightness-90"
+              width={600}
+              height={240}
+              className="w-full h-full object-cover brightness-90"
               data-ai-hint="sticky notes"
+              priority
             />
         </div>
 
