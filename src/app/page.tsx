@@ -228,7 +228,7 @@ export default function HomePage() {
           </Link>
         </nav>
       </footer>
-       <footer className="hidden md:block bg-background border-t">
+       <footer className="bg-background border-t">
         <div className="container mx-auto py-6 px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} ClarifAI. All rights reserved.</p>
           <nav className="flex gap-4 sm:gap-6">
