@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, History, HomeIcon, Inbox } from 'lucide-react';
+import { ArrowLeft, History, HomeIcon, Inbox, Info, Mail } from 'lucide-react';
 
 interface TranscriptionHistoryItem {
   id: string;
@@ -124,6 +124,14 @@ export default function HistoryPage() {
           <Link href="/history" className="flex flex-col items-center justify-center gap-1 text-primary">
             <History className="w-6 h-6" />
             <span className="text-xs font-medium">History</span>
+          </Link>
+           <Link href="/about" className="flex flex-col items-center justify-center gap-1 text-gray-500 dark:text-gray-400">
+            <Info className="w-6 h-6" />
+            <span className="text-xs font-medium">About</span>
+          </Link>
+          <Link href="/contact" className="flex flex-col items-center justify-center gap-1 text-gray-500 dark:text-gray-400">
+            <Mail className="w-6 h-6" />
+            <span className="text-xs font-medium">Contact</span>
           </Link>
         </nav>
       </footer>
