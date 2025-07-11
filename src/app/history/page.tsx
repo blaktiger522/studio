@@ -131,7 +131,7 @@ export default function HistoryPage() {
               <span>Privacy Policy</span>
             </Link>
           </div>
-          <p className="text-xs">&copy; {new Date().getFullYear()} ClarifAI. All rights reserved.</p>
+          <p className="text-xs">&copy; {new Date().getFullYear()} VisualSage. All rights reserved.</p>
         </div>
       </footer>
     </div>

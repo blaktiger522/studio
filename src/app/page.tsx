@@ -4,7 +4,6 @@
 import { useState, useCallback, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { extractTextFromImage, type ExtractTextFromImageOutput } from '@/ai/flows/extract-text-from-image';
-import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,7 +12,7 @@ import { CameraUploader } from '@/components/ocr/camera-uploader';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import Link from 'next/link';
 
-import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, Info, Mail, Shield } from 'lucide-react';
+import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, Info, Mail, Shield } from 'lucide-react';
 import { ImageCropper } from '@/components/ocr/image-cropper';
 
 const features = [
@@ -23,7 +22,7 @@ const features = [
     description: 'Advanced AI technology that improves text clarity and ensures words make sense in context.',
   },
   {
-    icon: FileDigit,
+    icon: ScanText,
     title: 'Number Clarity',
     description: 'Special processing to ensure numbers are accurately transcribed for financial notes and data.',
   },

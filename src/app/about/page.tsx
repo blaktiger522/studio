@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Users, Target, Eye, ScanLine } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Users, Target, ScanLine } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -19,12 +19,12 @@ export default function AboutPage() {
 
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl md:text-4xl font-bold">About ClarifAI</CardTitle>
+          <CardTitle className="text-3xl md:text-4xl font-bold">About VisualSage</CardTitle>
         </CardHeader>
         <CardContent className="space-y-12">
           <div>
               <p className="text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto">
-                At ClarifAI, our mission is to bridge the gap between physical documents and the digital world. We believe that valuable information locked in handwritten notes, forms, and archives should be easily accessible. Our advanced AI is designed to accurately transcribe even the most challenging handwriting, making data entry, archiving, and information retrieval effortless and efficient for everyone.
+                 At VisualSage, our mission is to bridge the gap between physical documents and the digital world. We believe that valuable information locked in handwritten notes, forms, and archives should be easily accessible. Our advanced AI is designed to accurately transcribe even the most challenging handwriting, making data entry, archiving, and information retrieval effortless and efficient for everyone.
               </p>
             </div>
           
