@@ -20,9 +20,6 @@ export default function AboutPage() {
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-3xl md:text-4xl font-bold">About ClarifAI</CardTitle>
-          <p className="text-muted-foreground mt-2 text-lg max-w-2xl mx-auto">
-            From Blurity To Clarity<br/>Complexity To Simplicity<br/>We Turn Chaos To Gloss Flawlessly
-          </p>
         </CardHeader>
         <CardContent className="space-y-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
