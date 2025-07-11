@@ -57,15 +57,13 @@ export function ImageCropper({ imageToCrop, onImageCropped }: ImageCropperProps)
   function onImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
     const { width, height } = e.currentTarget;
     const crop = centerCrop(
-      makeAspectCrop(
-        {
-          unit: '%',
-          width: 90,
-        },
-        16 / 9,
-        width,
-        height
-      ),
+      {
+        unit: 'px',
+        width: width * 0.9,
+        height: height * 0.9,
+        x: (width * 0.1) / 2,
+        y: (height * 0.1) / 2,
+      },
       width,
       height
     );
@@ -73,7 +71,7 @@ export function ImageCropper({ imageToCrop, onImageCropped }: ImageCropperProps)
   }
 
   const handleCrop = async () => {
-    if (completedCrop && imgRef.current) {
+    if (completedCrop?.width && completedCrop?.height && imgRef.current) {
         const croppedImageUrl = await getCroppedImg(imgRef.current, completedCrop);
         onImageCropped(croppedImageUrl);
     } else {
@@ -92,7 +90,6 @@ export function ImageCropper({ imageToCrop, onImageCropped }: ImageCropperProps)
                 crop={crop}
                 onChange={c => setCrop(c)}
                 onComplete={c => setCompletedCrop(c)}
-                aspect={16/9}
             >
                 <img
                     ref={imgRef}
