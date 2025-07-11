@@ -66,7 +66,7 @@ export default function HistoryPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="flex-grow container mx-auto p-4 md:p-6 pb-24">
+      <main className="flex-grow container mx-auto p-4 md:p-6">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl md:text-4xl font-bold">History</h1>
           <Button asChild variant="ghost">
@@ -115,18 +115,18 @@ export default function HistoryPage() {
         )}
       </main>
 
-      <footer className="w-full py-8 mt-8 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
-        <div className="container mx-auto text-center text-gray-500 dark:text-gray-400">
+      <footer className="w-full py-8 mt-auto border-t">
+        <div className="container mx-auto text-center text-muted-foreground">
           <div className="flex justify-center items-center gap-8 md:gap-12 mb-6">
-            <Link href="/about" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+            <Link href="/about" prefetch={false} className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
               <Info className="h-6 w-6" />
               <span>About Us</span>
             </Link>
-            <Link href="/contact" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+            <Link href="/contact" prefetch={false} className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
               <Mail className="h-6 w-6" />
               <span>Contact Us</span>
             </Link>
-            <Link href="/privacy" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+            <Link href="/privacy" prefetch={false} className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
               <Shield className="h-6 w-6" />
               <span>Privacy Policy</span>
             </Link>

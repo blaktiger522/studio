@@ -128,7 +128,7 @@ export default function HomePage() {
           }}
         />
       )}
-      <main className="flex-grow container mx-auto p-4 md:p-6 space-y-8 pb-24">
+      <main className="flex-grow container mx-auto p-4 md:p-6 space-y-8">
         <div className="text-center space-y-2">
           <h1 className="text-3xl md:text-4xl font-bold text-primary dark:text-primary">ClarifAI</h1>
           <p className="text-muted-foreground text-base md:text-lg">
@@ -215,22 +215,22 @@ export default function HomePage() {
           </>
         )}
       </main>
-      <footer className="w-full py-8 mt-8 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
-        <div className="container mx-auto text-center text-gray-500 dark:text-gray-400">
+      <footer className="w-full py-8 mt-auto border-t">
+        <div className="container mx-auto text-center text-muted-foreground">
           <div className="flex justify-center items-center gap-8 md:gap-12 mb-6">
-            <Link href="/history" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+            <Link href="/history" prefetch={false} className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
               <History className="h-6 w-6" />
               <span>History</span>
             </Link>
-            <Link href="/about" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+            <Link href="/about" prefetch={false} className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
               <Info className="h-6 w-6" />
               <span>About Us</span>
             </Link>
-            <Link href="/contact" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+            <Link href="/contact" prefetch={false} className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
               <Mail className="h-6 w-6" />
               <span>Contact Us</span>
             </Link>
-            <Link href="/privacy" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+            <Link href="/privacy" prefetch={false} className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
               <Shield className="h-6 w-6" />
               <span>Privacy Policy</span>
             </Link>
