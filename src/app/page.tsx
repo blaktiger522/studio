@@ -129,9 +129,11 @@ export default function Home() {
         />
       )}
       <main className="flex-grow container mx-auto p-4 md:p-6 space-y-8 pb-24">
-        <div className="text-left space-y-2">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">ClarifAI</h1>
-          <p className="text-gray-500 dark:text-gray-400 text-base md:text-lg">Transform handwritten notes into clear, digital text</p>
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-primary dark:text-primary">ClarifAI</h1>
+          <p className="text-muted-foreground text-base md:text-lg">
+            From Blurity To Clarity<br/>Complexity To Simplicity<br/>We Turn Chaos To Gloss Flawlessly
+          </p>
         </div>
 
         <div className="relative w-full h-48 md:h-64 rounded-xl overflow-hidden shadow-lg">
