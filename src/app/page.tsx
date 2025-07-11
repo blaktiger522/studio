@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useCallback, useRef } from 'react';
@@ -12,7 +13,7 @@ import { CameraUploader } from '@/components/ocr/camera-uploader';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import Link from 'next/link';
 
-import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, Home as HomeIcon, History } from 'lucide-react';
+import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, HomeIcon, History } from 'lucide-react';
 
 const features = [
   {
@@ -37,6 +38,12 @@ const features = [
   },
 ];
 
+interface TranscriptionHistoryItem {
+  id: string;
+  image: string;
+  text: string;
+  timestamp: string;
+}
 
 export default function Home() {
   const [ocrResult, setOcrResult] = useState<ExtractTextFromImageOutput | null>(null);
@@ -55,6 +62,20 @@ export default function Home() {
     try {
       const result = await extractTextFromImage({ photoDataUri: imageUri });
       setOcrResult(result);
+
+      // Save to history
+      const historyItem: TranscriptionHistoryItem = {
+        id: new Date().toISOString(),
+        image: imageUri,
+        text: result.extractedText,
+        timestamp: new Date().toISOString(),
+      };
+
+      const storedHistory = localStorage.getItem('transcriptionHistory');
+      const history = storedHistory ? JSON.parse(storedHistory) : [];
+      history.unshift(historyItem); // Add to the beginning
+      localStorage.setItem('transcriptionHistory', JSON.stringify(history.slice(0, 50))); // Limit history to 50 items
+
     } catch (error) {
       console.error('OCR failed:', error);
       toast({
@@ -176,10 +197,10 @@ export default function Home() {
             <HomeIcon className="w-6 h-6" />
             <span className="text-xs font-medium">Home</span>
           </Link>
-          <button className="flex flex-col items-center justify-center gap-1 text-gray-400 dark:text-gray-500">
+          <Link href="/history" className="flex flex-col items-center justify-center gap-1 text-gray-400 dark:text-gray-500">
             <History className="w-6 h-6" />
             <span className="text-xs font-medium">History</span>
-          </button>
+          </Link>
         </nav>
       </footer>
        <footer className="hidden md:block bg-background border-t">
