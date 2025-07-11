@@ -46,7 +46,7 @@ interface TranscriptionHistoryItem {
   timestamp: string;
 }
 
-export default function Home() {
+export default function HomePage() {
   const [ocrResult, setOcrResult] = useState<ExtractTextFromImageOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentImage, setCurrentImage] = useState<string | null>(null);
@@ -137,7 +137,7 @@ export default function Home() {
         </div>
 
         <div className="w-full h-[240px] rounded-xl overflow-hidden shadow-lg flex items-center justify-center bg-muted">
-            <Image src="https://placehold.co/600x240.png" alt="A hand writing on paper with a pen, illustrating the app's handwriting recognition capabilities." width={600} height={240} className="object-cover" data-ai-hint="handwriting paper" />
+            <Image src="https://placehold.co/600x240.png" alt="A hand writing on paper with a pen, illustrating the app's handwriting recognition capabilities." width={600} height={240} className="w-full h-full object-cover" data-ai-hint="handwriting paper" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
