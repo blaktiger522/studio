@@ -136,39 +136,6 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-64">
-          <div className="relative rounded-xl overflow-hidden shadow-lg group md:col-span-2">
-            <Image 
-              src="https://placehold.co/800x400.png"
-              alt="Detailed analysis of an object" 
-              layout="fill"
-              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-              priority
-              data-ai-hint="data visualization"
-            />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <div className="absolute bottom-4 left-4 text-white">
-              <h3 className="font-bold text-lg">In-Depth Analysis</h3>
-              <p className="text-sm">Categorize objects, scenes, and text.</p>
-            </div>
-          </div>
-          <div className="relative rounded-xl overflow-hidden shadow-lg group">
-             <Image 
-              src="https://placehold.co/400x400.png"
-              alt="Visual search suggestions" 
-              layout="fill"
-              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-              priority
-              data-ai-hint="search interface"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-             <div className="absolute bottom-4 left-4 text-white">
-              <h3 className="font-bold text-lg">Smart Search</h3>
-              <p className="text-sm">Get intelligent suggestions.</p>
-            </div>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Dialog open={isCameraOpen} onOpenChange={setIsCameraOpen}>
             <DialogTrigger asChild>
