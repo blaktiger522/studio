@@ -214,23 +214,26 @@ export default function HomePage() {
             </div>
           </>
         )}
-         <footer className="w-full pt-8 mt-8 border-t border-gray-200 dark:border-gray-800">
-          <div className="container mx-auto text-center text-gray-500 dark:text-gray-400">
-            <div className="flex justify-center gap-6 mb-4">
-              <Link href="/about" className="text-sm hover:text-primary transition-colors">
-                <Info className="inline-block mr-1 h-4 w-4" /> About Us
-              </Link>
-              <Link href="/contact" className="text-sm hover:text-primary transition-colors">
-                <Mail className="inline-block mr-1 h-4 w-4" /> Contact Us
-              </Link>
-              <Link href="/privacy" className="text-sm hover:text-primary transition-colors">
-                <Shield className="inline-block mr-1 h-4 w-4" /> Privacy Policy
-              </Link>
-            </div>
-            <p className="text-xs">&copy; {new Date().getFullYear()} ClarifAI. All rights reserved.</p>
-          </div>
-        </footer>
       </main>
+      <footer className="w-full py-8 mt-8 border-t border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto text-center text-gray-500 dark:text-gray-400">
+          <div className="flex justify-center items-start gap-8 md:gap-12 mb-6">
+            <Link href="/about" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+              <Info className="h-6 w-6" />
+              <span>About Us</span>
+            </Link>
+            <Link href="/contact" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+              <Mail className="h-6 w-6" />
+              <span>Contact Us</span>
+            </Link>
+            <Link href="/privacy" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+              <Shield className="h-6 w-6" />
+              <span>Privacy Policy</span>
+            </Link>
+          </div>
+          <p className="text-xs">&copy; {new Date().getFullYear()} ClarifAI. All rights reserved.</p>
+        </div>
+      </footer>
 
        <footer className="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 shadow-t-lg md:hidden">
         <nav className="flex justify-around items-center h-16">
