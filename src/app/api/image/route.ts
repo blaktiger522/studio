@@ -28,9 +28,19 @@ export async function GET() {
 
   } catch (error) {
     console.error('Failed to generate image:', error);
+    // Return a placeholder or error image
+    const placeholder = Buffer.from(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="240" viewBox="0 0 600 240"><rect width="600" height="240" fill="#e2e8f0"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#94a3b8">Error generating image</text></svg>',
+      'utf-8'
+    );
     return new NextResponse(
-      'Error generating image. Please try again later.',
-      { status: 500 }
+      placeholder,
+      { 
+        status: 500,
+        headers: {
+            'Content-Type': 'image/svg+xml'
+        }
+      }
     );
   }
 }
