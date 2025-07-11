@@ -136,8 +136,26 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="w-full h-[240px] rounded-xl overflow-hidden shadow-lg flex items-center justify-center bg-muted">
-            <Image src="https://placehold.co/600x240.png" alt="A hand writing on paper with a pen, illustrating the app's handwriting recognition capabilities." width={600} height={240} className="w-full h-full object-cover" data-ai-hint="handwriting paper" />
+        <div className="relative w-full h-[240px] rounded-xl overflow-hidden shadow-lg bg-muted">
+            <Image 
+              src="https://placehold.co/600x240.png" 
+              alt="Background of handwritten notes" 
+              layout="fill" 
+              objectFit="cover" 
+              className="opacity-50"
+              data-ai-hint="handwriting texture"
+            />
+            <div className="absolute inset-0 flex items-center justify-center p-4">
+              <div className="relative w-4/5 h-4/5 shadow-2xl rounded-lg overflow-hidden">
+                <Image 
+                  src="https://placehold.co/400x200.png" 
+                  alt="A clear digital version of a handwritten note" 
+                  layout="fill" 
+                  objectFit="cover"
+                  data-ai-hint="digital document"
+                />
+              </div>
+            </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
