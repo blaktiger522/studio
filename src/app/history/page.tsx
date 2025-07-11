@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, History, Inbox, Info, Mail, Shield } from 'lucide-react';
+import { ArrowLeft, Inbox, Info, Mail, Shield } from 'lucide-react';
 
 interface TranscriptionHistoryItem {
   id: string;
