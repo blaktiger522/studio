@@ -1,14 +1,26 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
+
 
 export default function PrivacyPolicyPage() {
   return (
     <div className="container mx-auto p-4 md:p-6">
+      <div className="mb-6">
+        <Button asChild variant="ghost">
+          <Link href="/">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Home
+          </Link>
+        </Button>
+      </div>
       <Card>
         <CardHeader>
           <CardTitle className="text-3xl md:text-4xl font-bold">Privacy Policy</CardTitle>
           <p className="text-muted-foreground mt-2">Last updated: {new Date().toLocaleDateString()}</p>
         </CardHeader>
-        <CardContent className="prose prose-stone dark:prose-invert max-w-none">
+        <CardContent className="prose dark:prose-invert max-w-none">
           <p>
             Welcome to ClarifAI. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application.
           </p>

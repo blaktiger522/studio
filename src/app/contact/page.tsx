@@ -3,11 +3,20 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Mail, MessageSquare, User } from 'lucide-react';
+import { Mail, MessageSquare, User, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto p-4 md:p-6 flex justify-center">
+    <div className="container mx-auto p-4 md:p-6 flex flex-col items-center">
+       <div className="w-full max-w-2xl mb-6 text-left">
+        <Button asChild variant="ghost">
+          <Link href="/">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Home
+          </Link>
+        </Button>
+      </div>
       <Card className="w-full max-w-2xl">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl md:text-4xl font-bold">Contact Us</CardTitle>

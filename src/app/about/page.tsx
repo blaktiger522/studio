@@ -1,14 +1,26 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Users, Target, Eye, ScanLine } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
 
 export default function AboutPage() {
   return (
     <div className="container mx-auto p-4 md:p-6">
+      <div className="mb-6">
+        <Button asChild variant="ghost">
+          <Link href="/">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to Home
+          </Link>
+        </Button>
+      </div>
+
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-3xl md:text-4xl font-bold">About ClarifAI</CardTitle>
-          <p className="text-muted-foreground mt-2 text-lg">
+          <p className="text-muted-foreground mt-2 text-lg max-w-2xl mx-auto">
             From Blurity To Clarity<br/>Complexity To Simplicity<br/>We Turn Chaos To Gloss Flawlessly
           </p>
         </CardHeader>

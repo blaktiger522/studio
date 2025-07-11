@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { Camera, Video, VideoOff, AlertCircle } from 'lucide-react';
+import { Camera, Video, VideoOff, AlertCircle, RefreshCw } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Card } from '../ui/card';
 
@@ -15,6 +15,7 @@ interface CameraUploaderProps {
 export function CameraUploader({ onImageCapture, disabled }: CameraUploaderProps) {
   const [hasCameraPermission, setHasCameraPermission] = useState<boolean | null>(null);
   const [isCameraOn, setIsCameraOn] = useState(false);
+  const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -33,6 +34,7 @@ export function CameraUploader({ onImageCapture, disabled }: CameraUploaderProps
 
   const startCamera = useCallback(async () => {
     stopCamera(); 
+    setCapturedImage(null);
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ 
         video: { facingMode: 'environment' } 
@@ -56,16 +58,14 @@ export function CameraUploader({ onImageCapture, disabled }: CameraUploaderProps
   }, [toast, stopCamera]);
 
   useEffect(() => {
-    // Check for camera support
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         setHasCameraPermission(false);
     }
-    
-    // Clean up camera stream when component unmounts or is disabled
+    startCamera();
     return () => {
       stopCamera();
     };
-  }, [stopCamera, disabled]);
+  }, [startCamera, stopCamera]);
   
   const handleCapture = () => {
     if (videoRef.current && canvasRef.current) {
@@ -79,19 +79,26 @@ export function CameraUploader({ onImageCapture, disabled }: CameraUploaderProps
       if (context) {
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         const dataUri = canvas.toDataURL('image/jpeg');
-        onImageCapture(dataUri);
+        setCapturedImage(dataUri);
         stopCamera();
       }
     }
   };
+  
+  const handleConfirm = () => {
+      if(capturedImage) {
+          onImageCapture(capturedImage);
+      }
+  }
 
   return (
     <div className="flex flex-col items-center justify-center w-full gap-4">
-      <Card className="w-full p-4 border-2 border-dashed relative overflow-hidden aspect-video flex items-center justify-center bg-muted/50">
-        <video ref={videoRef} className={`w-full h-full object-cover ${isCameraOn ? 'block' : 'hidden'}`} autoPlay playsInline muted />
+      <Card className="w-full p-2 border-2 relative overflow-hidden aspect-video flex items-center justify-center bg-muted/50">
+        <video ref={videoRef} className={`w-full h-full object-cover rounded-md ${isCameraOn ? 'block' : 'hidden'}`} autoPlay playsInline muted />
+        {capturedImage && <img src={capturedImage} alt="Captured" className={`w-full h-full object-cover rounded-md ${!isCameraOn ? 'block' : 'hidden'}`} />}
         <canvas ref={canvasRef} className="hidden" />
         
-        {!isCameraOn && (
+        {!isCameraOn && !capturedImage && (
            <div className="text-center text-muted-foreground">
              <VideoOff className="w-16 h-16 mx-auto" />
              <p className="mt-2">Camera is off</p>
@@ -110,20 +117,24 @@ export function CameraUploader({ onImageCapture, disabled }: CameraUploaderProps
         </Alert>
       )}
 
-      <div className="flex gap-4">
-        {!isCameraOn ? (
-           <Button onClick={startCamera} disabled={disabled || hasCameraPermission === false}>
-            <Video className="mr-2" /> Start Camera
+      <div className="flex justify-center gap-4 w-full">
+        {isCameraOn ? (
+           <Button onClick={handleCapture} disabled={disabled} className="w-full">
+            <Camera className="mr-2" /> Capture Image
           </Button>
-        ) : (
+        ) : capturedImage ? (
           <>
-            <Button onClick={handleCapture} disabled={disabled}>
-              <Camera className="mr-2" /> Capture Image
+            <Button onClick={startCamera} variant="outline" disabled={disabled}>
+              <RefreshCw className="mr-2" /> Retake
             </Button>
-            <Button onClick={stopCamera} variant="outline">
-              <VideoOff className="mr-2" /> Stop Camera
+            <Button onClick={handleConfirm} disabled={disabled} className="flex-grow">
+              Use Photo
             </Button>
           </>
+        ) : (
+            <Button onClick={startCamera} disabled={disabled || hasCameraPermission === false}>
+                <Video className="mr-2" /> Start Camera
+            </Button>
         )}
       </div>
     </div>

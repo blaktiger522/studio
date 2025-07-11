@@ -25,7 +25,7 @@ export function OcrResults({ image, result, isLoading }: OcrResultsProps) {
       });
     }
   };
-
+  
   const renderContent = () => {
     if (isLoading) {
       return (
@@ -35,6 +35,7 @@ export function OcrResults({ image, result, isLoading }: OcrResultsProps) {
             <Skeleton className="h-5 w-full mt-2" />
           </CardHeader>
           <CardContent className="space-y-4">
+             <Skeleton className="w-full aspect-video" />
             <Skeleton className="h-32 w-full" />
             <Skeleton className="h-10 w-40" />
           </CardContent>
@@ -43,17 +44,27 @@ export function OcrResults({ image, result, isLoading }: OcrResultsProps) {
     }
 
     if (!image) {
-      return (
-        <div className="flex flex-col items-center justify-center text-center h-full p-8 border-2 border-dashed rounded-lg border-border">
-          <ScanSearch className="w-16 h-16 text-muted-foreground" />
-          <h3 className="mt-4 text-xl font-semibold">Your results will appear here</h3>
-          <p className="mt-2 text-muted-foreground">Upload an image to start extracting text</p>
-        </div>
-      );
+      return null;
     }
 
     return (
       <div className="space-y-6 animate-in fade-in-50 duration-500">
+        <div className="mb-6 overflow-hidden rounded-lg shadow-lg relative group">
+            <Image
+              src={image}
+              alt="Uploaded for OCR"
+              width={600}
+              height={400}
+              className="object-cover w-full aspect-video"
+              data-ai-hint="document scan"
+            />
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className='flex items-center gap-2 text-white font-semibold'>
+                <FileText />
+                <span>Original Image</span>
+              </div>
+            </div>
+          </div>
         {result && (
           <Card>
             <CardHeader>
@@ -73,7 +84,7 @@ export function OcrResults({ image, result, isLoading }: OcrResultsProps) {
             </CardHeader>
             <CardContent>
               <Textarea
-                className="w-full h-80 text-base font-mono bg-background"
+                className="w-full h-80 text-base bg-secondary/50 font-mono"
                 defaultValue={result.extractedText}
                 aria-label="Extracted Text"
               />
@@ -86,29 +97,6 @@ export function OcrResults({ image, result, isLoading }: OcrResultsProps) {
 
   return (
     <div className="w-full">
-      {image && !isLoading && (
-        <div className="mb-6 overflow-hidden rounded-lg shadow-lg relative group">
-          <Image
-            src={image}
-            alt="Uploaded for OCR"
-            width={600}
-            height={400}
-            className="object-cover w-full aspect-video"
-            data-ai-hint="document scan"
-          />
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <div className='flex items-center gap-2 text-white font-semibold'>
-              <FileText />
-              <span>Original Image</span>
-            </div>
-          </div>
-        </div>
-      )}
-       {image && isLoading && (
-        <div className="mb-6 overflow-hidden rounded-lg">
-           <Skeleton className="w-full aspect-video" />
-        </div>
-      )}
       {renderContent()}
     </div>
   );
