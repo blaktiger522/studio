@@ -28,17 +28,13 @@ export function OcrResults({ image, result, isLoading }: OcrResultsProps) {
   const renderContent = () => {
     if (isLoading) {
       return (
-        <Card>
-          <CardHeader>
+        <div className="space-y-6">
+          <Skeleton className="w-full aspect-video rounded-lg" />
+          <div className="space-y-2">
             <Skeleton className="h-7 w-48" />
-            <Skeleton className="h-5 w-full mt-2" />
-          </CardHeader>
-          <CardContent className="space-y-4">
-             <Skeleton className="w-full aspect-video" />
             <Skeleton className="h-32 w-full" />
-            <Skeleton className="h-10 w-40" />
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       );
     }
 
@@ -48,48 +44,38 @@ export function OcrResults({ image, result, isLoading }: OcrResultsProps) {
 
     return (
       <div className="space-y-6 animate-in fade-in-50 duration-500">
-        <div className="mb-6 overflow-hidden rounded-lg shadow-lg relative group">
-            <Image
-              src={image}
-              alt="Uploaded for OCR"
-              width={600}
-              height={400}
-              className="object-cover w-full aspect-video"
-              data-ai-hint="document scan"
-            />
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-              <div className='flex items-center gap-2 text-white font-semibold'>
-                <FileText />
-                <span>Original Image</span>
-              </div>
-            </div>
-          </div>
+        <div className="overflow-hidden rounded-lg border shadow-sm">
+          <Image
+            src={image}
+            alt="Uploaded for OCR"
+            width={800}
+            height={600}
+            className="object-contain w-full"
+            data-ai-hint="document scan"
+          />
+        </div>
+        
         {result && (
-          <Card>
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Type className="w-6 h-6 text-primary" />
-                  <CardTitle>Extracted Text</CardTitle>
-                </div>
-                <Button variant="ghost" size="sm" onClick={handleCopyToClipboard}>
-                  <ClipboardCopy className="mr-2" />
-                  Copy
-                </Button>
-              </div>
-              <CardDescription>
-                Review the extracted text below.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div
-                className="w-full min-h-[10rem] p-4 text-base bg-secondary/50 font-mono rounded-md border border-input whitespace-pre-wrap break-words"
-                aria-label="Extracted Text"
-              >
-                {result.extractedText}
-              </div>
-            </CardContent>
-          </Card>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold">Transcription</h2>
+              <Button variant="ghost" size="sm" onClick={handleCopyToClipboard}>
+                <ClipboardCopy className="mr-2 h-4 w-4" />
+                Copy
+              </Button>
+            </div>
+            
+            <Card>
+              <CardContent className="p-6">
+                <p
+                  className="text-base text-gray-700 dark:text-gray-300 leading-relaxed"
+                  aria-label="Extracted Text"
+                >
+                  {result.extractedText}
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         )}
       </div>
     );
