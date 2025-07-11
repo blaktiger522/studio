@@ -13,7 +13,7 @@ import { CameraUploader } from '@/components/ocr/camera-uploader';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import Link from 'next/link';
 
-import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, Info, Mail, Shield } from 'lucide-react';
+import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, Info, Mail, Shield, History } from 'lucide-react';
 import { ImageCropper } from '@/components/ocr/image-cropper';
 
 const features = [
@@ -218,6 +218,10 @@ export default function HomePage() {
       <footer className="w-full py-8 mt-8 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
         <div className="container mx-auto text-center text-gray-500 dark:text-gray-400">
           <div className="flex justify-center items-center gap-8 md:gap-12 mb-6">
+            <Link href="/history" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+              <History className="h-6 w-6" />
+              <span>History</span>
+            </Link>
             <Link href="/about" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
               <Info className="h-6 w-6" />
               <span>About Us</span>
