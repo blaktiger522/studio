@@ -138,11 +138,12 @@ export default function HomePage() {
 
         <div className="relative w-full h-[240px] rounded-xl overflow-hidden shadow-lg bg-muted flex items-center justify-center">
             <Image 
-              src="https://placehold.co/600x240.png" 
+              src="/api/image"
               alt="Handwritten notes" 
               width={600}
               height={240}
-              className="object-cover"
+              className="object-cover w-full h-full"
+              priority
               data-ai-hint="handwriting document"
             />
         </div>
