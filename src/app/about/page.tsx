@@ -22,24 +22,11 @@ export default function AboutPage() {
           <CardTitle className="text-3xl md:text-4xl font-bold">About ClarifAI</CardTitle>
         </CardHeader>
         <CardContent className="space-y-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
-              <p className="text-muted-foreground leading-relaxed">
+          <div>
+              <p className="text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto">
                 At ClarifAI, our mission is to bridge the gap between physical documents and the digital world. We believe that valuable information locked in handwritten notes, forms, and archives should be easily accessible. Our advanced AI is designed to accurately transcribe even the most challenging handwriting, making data entry, archiving, and information retrieval effortless and efficient for everyone.
               </p>
             </div>
-            <div className="flex justify-center">
-              <Image 
-                src="https://placehold.co/500x300.png"
-                width={500}
-                height={300}
-                alt="Our Mission"
-                className="rounded-lg shadow-md"
-                data-ai-hint="team mission"
-              />
-            </div>
-          </div>
           
           <div className="space-y-8">
             <h2 className="text-2xl font-semibold text-center">What We Do</h2>
