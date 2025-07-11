@@ -13,7 +13,7 @@ import { CameraUploader } from '@/components/ocr/camera-uploader';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import Link from 'next/link';
 
-import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, Info, Mail, Shield, History } from 'lucide-react';
+import { Camera, FileUp, Sparkles, ScanText, Search, MessageSquare, FileDigit, Info, Mail, Shield } from 'lucide-react';
 import { ImageCropper } from '@/components/ocr/image-cropper';
 
 const features = [
@@ -130,22 +130,43 @@ export default function HomePage() {
       )}
       <main className="flex-grow container mx-auto p-4 md:p-6 space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary dark:text-primary">ClarifAI</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-primary dark:text-primary">VisualSage</h1>
           <p className="text-muted-foreground text-base md:text-lg">
-            From Blurity To Clarity<br/>Complexity To Simplicity<br/>We Turn Chaos To Gloss Flawlessly
+            Unlock insights from your images with the power of AI.
           </p>
         </div>
 
-        <div className="relative w-full h-[240px] rounded-xl overflow-hidden shadow-lg bg-muted flex items-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-64">
+          <div className="relative rounded-xl overflow-hidden shadow-lg group md:col-span-2">
             <Image 
-              src="https://placehold.co/600x240.png"
-              alt="Handwritten notes" 
-              width={600}
-              height={240}
-              className="object-cover w-full h-full"
+              src="https://placehold.co/800x400.png"
+              alt="Detailed analysis of an object" 
+              layout="fill"
+              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
               priority
-              data-ai-hint="handwriting document"
+              data-ai-hint="data visualization"
             />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div className="absolute bottom-4 left-4 text-white">
+              <h3 className="font-bold text-lg">In-Depth Analysis</h3>
+              <p className="text-sm">Categorize objects, scenes, and text.</p>
+            </div>
+          </div>
+          <div className="relative rounded-xl overflow-hidden shadow-lg group">
+             <Image 
+              src="https://placehold.co/400x400.png"
+              alt="Visual search suggestions" 
+              layout="fill"
+              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+              priority
+              data-ai-hint="search interface"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+             <div className="absolute bottom-4 left-4 text-white">
+              <h3 className="font-bold text-lg">Smart Search</h3>
+              <p className="text-sm">Get intelligent suggestions.</p>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -153,12 +174,12 @@ export default function HomePage() {
             <DialogTrigger asChild>
                <Button size="lg" className="h-14 text-lg w-full">
                   <Camera className="mr-3" />
-                  Take Photo
+                  Analyze via Camera
                 </Button>
             </DialogTrigger>
             <DialogContent className="max-w-3xl">
               <DialogHeader>
-                <DialogTitle>Capture Image</DialogTitle>
+                <DialogTitle>Capture Image for Analysis</DialogTitle>
               </DialogHeader>
               <CameraUploader onImageCapture={onImageSelected} disabled={isLoading} />
             </DialogContent>
@@ -191,8 +212,8 @@ export default function HomePage() {
                 {features.map((feature, index) => (
                   <Card key={index} className="bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-shadow">
                     <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2">
-                      <div className="p-2 bg-blue-100 dark:bg-blue-900/50 rounded-lg">
-                        <feature.icon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                      <div className="p-2 bg-primary/10 rounded-lg">
+                        <feature.icon className="w-5 h-5 text-primary" />
                       </div>
                       <CardTitle className="text-base font-semibold text-gray-800 dark:text-white">{feature.title}</CardTitle>
                     </CardHeader>
@@ -205,11 +226,11 @@ export default function HomePage() {
             </div>
 
             <div className="space-y-4 pt-4">
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Recent Transcriptions</h2>
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Recent Analyses</h2>
               <div className="flex flex-col items-center justify-center text-center p-8 border-2 border-dashed rounded-xl border-gray-200 dark:border-gray-800 bg-gray-100/50 dark:bg-gray-900/50">
                 <ScanText className="w-12 h-12 text-gray-400 dark:text-gray-600" />
-                <h3 className="mt-4 text-lg font-semibold text-gray-700 dark:text-gray-300">No transcriptions yet</h3>
-                <p className="mt-1 text-gray-500 dark:text-gray-400 text-sm">Capture or upload an image to get started</p>
+                <h3 className="mt-4 text-lg font-semibold text-gray-700 dark:text-gray-300">No analyses yet</h3>
+                <p className="mt-1 text-gray-500 dark:text-gray-400 text-sm">Upload an image to get started</p>
               </div>
             </div>
           </>
@@ -218,10 +239,6 @@ export default function HomePage() {
       <footer className="w-full py-8 mt-auto border-t">
         <div className="container mx-auto text-center text-muted-foreground">
           <div className="flex justify-center items-center gap-8 md:gap-12 mb-6">
-            <Link href="/history" prefetch={false} className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
-              <History className="h-6 w-6" />
-              <span>History</span>
-            </Link>
             <Link href="/about" prefetch={false} className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
               <Info className="h-6 w-6" />
               <span>About Us</span>
@@ -235,7 +252,7 @@ export default function HomePage() {
               <span>Privacy Policy</span>
             </Link>
           </div>
-          <p className="text-xs">&copy; {new Date().getFullYear()} ClarifAI. All rights reserved.</p>
+          <p className="text-xs">&copy; {new Date().getFullYear()} VisualSage. All rights reserved.</p>
         </div>
       </footer>
     </div>
