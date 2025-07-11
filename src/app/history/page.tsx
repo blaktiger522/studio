@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, History, HomeIcon, Inbox, Info, Mail } from 'lucide-react';
+import { ArrowLeft, History, HomeIcon, Inbox, Info, Mail, Shield } from 'lucide-react';
 
 interface TranscriptionHistoryItem {
   id: string;
@@ -69,7 +69,7 @@ export default function HistoryPage() {
       <main className="flex-grow container mx-auto p-4 md:p-6 pb-24">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl md:text-4xl font-bold">History</h1>
-          <Button asChild variant="ghost" className="hidden md:flex">
+          <Button asChild variant="ghost">
             <Link href="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Home
@@ -115,25 +115,32 @@ export default function HistoryPage() {
         )}
       </main>
 
-      <footer className="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 shadow-t-lg md:hidden">
-        <nav className="flex justify-around items-center h-16">
-          <Link href="/" className="flex flex-col items-center justify-center gap-1 text-gray-500 dark:text-gray-400">
-            <HomeIcon className="w-6 h-6" />
-            <span className="text-xs font-medium">Home</span>
-          </Link>
-          <Link href="/history" className="flex flex-col items-center justify-center gap-1 text-primary">
-            <History className="w-6 h-6" />
-            <span className="text-xs font-medium">History</span>
-          </Link>
-           <Link href="/about" className="flex flex-col items-center justify-center gap-1 text-gray-500 dark:text-gray-400">
-            <Info className="w-6 h-6" />
-            <span className="text-xs font-medium">About</span>
-          </Link>
-          <Link href="/contact" className="flex flex-col items-center justify-center gap-1 text-gray-500 dark:text-gray-400">
-            <Mail className="w-6 h-6" />
-            <span className="text-xs font-medium">Contact</span>
-          </Link>
-        </nav>
+      <footer className="w-full py-8 mt-8 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+        <div className="container mx-auto text-center text-gray-500 dark:text-gray-400">
+          <div className="flex justify-center items-center gap-8 md:gap-12 mb-6">
+            <Link href="/" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+              <HomeIcon className="h-6 w-6" />
+              <span>Home</span>
+            </Link>
+             <Link href="/history" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors text-primary">
+              <History className="h-6 w-6" />
+              <span>History</span>
+            </Link>
+            <Link href="/about" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+              <Info className="h-6 w-6" />
+              <span>About Us</span>
+            </Link>
+            <Link href="/contact" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+              <Mail className="h-6 w-6" />
+              <span>Contact Us</span>
+            </Link>
+            <Link href="/privacy" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+              <Shield className="h-6 w-6" />
+              <span>Privacy Policy</span>
+            </Link>
+          </div>
+          <p className="text-xs">&copy; {new Date().getFullYear()} ClarifAI. All rights reserved.</p>
+        </div>
       </footer>
     </div>
   );

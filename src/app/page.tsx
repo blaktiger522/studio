@@ -215,9 +215,17 @@ export default function HomePage() {
           </>
         )}
       </main>
-      <footer className="hidden md:block w-full py-8 mt-8 border-t border-gray-200 dark:border-gray-800">
+      <footer className="w-full py-8 mt-8 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
         <div className="container mx-auto text-center text-gray-500 dark:text-gray-400">
           <div className="flex justify-center items-center gap-8 md:gap-12 mb-6">
+            <Link href="/" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+              <HomeIcon className="h-6 w-6" />
+              <span>Home</span>
+            </Link>
+             <Link href="/history" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
+              <History className="h-6 w-6" />
+              <span>History</span>
+            </Link>
             <Link href="/about" className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
               <Info className="h-6 w-6" />
               <span>About Us</span>
@@ -233,19 +241,6 @@ export default function HomePage() {
           </div>
           <p className="text-xs">&copy; {new Date().getFullYear()} ClarifAI. All rights reserved.</p>
         </div>
-      </footer>
-
-       <footer className="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 shadow-t-lg md:hidden">
-        <nav className="flex justify-around items-center h-16">
-          <Link href="/" className="flex flex-col items-center justify-center gap-1 text-primary">
-            <HomeIcon className="w-6 h-6" />
-            <span className="text-xs font-medium">Home</span>
-          </Link>
-          <Link href="/history" className="flex flex-col items-center justify-center gap-1 text-gray-400 dark:text-gray-500">
-            <History className="w-6 h-6" />
-            <span className="text-xs font-medium">History</span>
-          </Link>
-        </nav>
       </footer>
     </div>
   );
