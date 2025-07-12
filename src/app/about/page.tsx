@@ -19,14 +19,14 @@ export default function AboutPage() {
 
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl md:text-4xl font-bold">About VisualSage</CardTitle>
+          <CardTitle className="text-3xl md:text-4xl font-bold">About ClarifAI</CardTitle>
         </CardHeader>
         <CardContent className="space-y-12">
           <div>
-              <p className="text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto">
-                 At VisualSage, our mission is to bridge the gap between physical documents and the digital world. We believe that valuable information locked in handwritten notes, forms, and archives should be easily accessible. Our advanced AI is designed to accurately transcribe even the most challenging handwriting, making data entry, archiving, and information retrieval effortless and efficient for everyone.
-              </p>
-            </div>
+            <p className="text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto">
+              At ClarifAI, our mission is to bridge the gap between physical documents and the digital world. We believe that valuable information locked in handwritten notes, forms, and archives should be easily accessible. Our advanced AI is designed to accurately transcribe even the most challenging handwriting, making data entry, archiving, and information retrieval effortless and efficient for everyone.
+            </p>
+          </div>
           
           <div className="space-y-8">
             <h2 className="text-2xl font-semibold text-center">What We Do</h2>

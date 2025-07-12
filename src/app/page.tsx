@@ -129,9 +129,11 @@ export default function HomePage() {
       )}
       <main className="flex-grow container mx-auto p-4 md:p-6 space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-3xl md:text-4xl font-bold text-primary dark:text-primary">VisualSage</h1>
-          <p className="text-muted-foreground text-base md:text-lg">
-            Unlock insights from your images with the power of AI.
+          <h1 className="text-3xl md:text-4xl font-bold text-primary dark:text-primary">ClarifAI</h1>
+          <p className="text-muted-foreground text-base md:text-lg whitespace-pre-line">
+            {`From Blurry To Clarity
+Complexity To Simplicity
+We Turn Chaos To Gloss Flawlessly`}
           </p>
         </div>
 
@@ -218,7 +220,7 @@ export default function HomePage() {
               <span>Privacy Policy</span>
             </Link>
           </div>
-          <p className="text-xs">&copy; {new Date().getFullYear()} VisualSage. All rights reserved.</p>
+          <p className="text-xs">&copy; {new Date().getFullYear()} ClarifAI. All rights reserved.</p>
         </div>
       </footer>
     </div>

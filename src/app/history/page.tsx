@@ -117,7 +117,7 @@ export default function HistoryPage() {
 
       <footer className="w-full py-8 mt-auto border-t">
         <div className="container mx-auto text-center text-muted-foreground">
-          <div className="flex justify-center items-center gap-8 md:gap-12 mb-6">
+           <div className="flex justify-center items-center gap-8 md:gap-12 mb-6">
             <Link href="/about" prefetch={false} className="flex flex-col items-center gap-2 text-sm hover:text-primary transition-colors">
               <Info className="h-6 w-6" />
               <span>About Us</span>
@@ -131,7 +131,7 @@ export default function HistoryPage() {
               <span>Privacy Policy</span>
             </Link>
           </div>
-          <p className="text-xs">&copy; {new Date().getFullYear()} VisualSage. All rights reserved.</p>
+          <p className="text-xs">&copy; {new Date().getFullYear()} ClarifAI. All rights reserved.</p>
         </div>
       </footer>
     </div>

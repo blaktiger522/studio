@@ -5,8 +5,8 @@ import "react-image-crop/dist/ReactCrop.css";
 
 
 export const metadata: Metadata = {
-  title: 'VisualSage',
-  description: 'Unlock insights from your images with the power of AI.',
+  title: 'ClarifAI',
+  description: 'From Blurry To Clarity, Complexity To Simplicity. We Turn Chaos To Gloss Flawlessly.',
 };
 
 export default function RootLayout({
