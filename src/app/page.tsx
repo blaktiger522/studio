@@ -142,7 +142,7 @@ We Turn Chaos To Gloss Flawlessly`}
             <DialogTrigger asChild>
                <Button size="lg" className="h-14 text-lg w-full">
                   <Camera className="mr-3" />
-                  Analyze via Camera
+                  Capture Image
                 </Button>
             </DialogTrigger>
             <DialogContent className="max-w-3xl">
