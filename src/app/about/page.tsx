@@ -10,7 +10,7 @@ export default function AboutPage() {
     <div className="container mx-auto p-4 md:p-6">
       <div className="mb-6">
         <Button asChild variant="ghost">
-          <Link href="/">
+          <Link href="/" prefetch={false}>
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
           </Link>

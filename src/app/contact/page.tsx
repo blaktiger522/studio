@@ -11,7 +11,7 @@ export default function ContactPage() {
     <div className="container mx-auto p-4 md:p-6 flex flex-col items-center">
        <div className="w-full max-w-2xl mb-6 text-left">
         <Button asChild variant="ghost">
-          <Link href="/">
+          <Link href="/" prefetch={false}>
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
           </Link>
