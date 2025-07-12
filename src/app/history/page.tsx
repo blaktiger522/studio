@@ -7,11 +7,13 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, Inbox, Info, Mail, Shield } from 'lucide-react';
+import type { ExtractTextFromImageOutput } from '@/ai/flows/extract-text-from-image';
+import { OcrResults } from '@/components/ocr/ocr-results';
 
 interface TranscriptionHistoryItem {
   id: string;
   image: string;
-  text: string;
+  result: ExtractTextFromImageOutput;
   timestamp: string;
 }
 
@@ -36,29 +38,12 @@ export default function HistoryPage() {
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to History
         </Button>
-        <div className="mt-4 space-y-6">
-          <div className="overflow-hidden rounded-lg shadow-lg">
-            <Image
-              src={selectedItem.image}
-              alt="Transcription source"
-              width={800}
-              height={600}
-              className="object-contain w-full"
-            />
-          </div>
-          <Card>
-            <CardHeader>
-              <CardTitle>Extracted Text</CardTitle>
-              <CardDescription>
-                Processed on {new Date(selectedItem.timestamp).toLocaleString()}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="w-full p-4 text-base bg-secondary/50 font-mono rounded-md border border-input whitespace-pre-wrap break-words">
-                {selectedItem.text}
-              </div>
-            </CardContent>
-          </Card>
+        <div className="mt-4">
+           <OcrResults 
+            image={selectedItem.image}
+            result={selectedItem.result} 
+            isLoading={false} 
+          />
         </div>
       </div>
     );
@@ -70,7 +55,7 @@ export default function HistoryPage() {
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl md:text-4xl font-bold">History</h1>
           <Button asChild variant="ghost">
-            <Link href="/">
+            <Link href="/" prefetch={false}>
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Home
             </Link>
@@ -96,7 +81,7 @@ export default function HistoryPage() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground truncate">{item.text}</p>
+                  <p className="text-sm text-muted-foreground truncate">{item.result.extractedText}</p>
                   <p className="text-xs text-muted-foreground mt-2">
                     {new Date(item.timestamp).toLocaleDateString()}
                   </p>

@@ -20,7 +20,13 @@ const ExtractTextFromImageInputSchema = z.object({
 export type ExtractTextFromImageInput = z.infer<typeof ExtractTextFromImageInputSchema>;
 
 const ExtractTextFromImageOutputSchema = z.object({
-  extractedText: z.string().describe('The recognized text from the image.'),
+  contextualSummary: z.string().describe("A brief, one-sentence summary of the document's likely context (e.g., 'This appears to be a medical prescription')."),
+  extractedText: z.string().describe('The full transcribed text, corrected for context.'),
+  clarifications: z.array(z.object({
+    originalWord: z.string().describe('The word in the text that is ambiguous or hard to read.'),
+    suggestions: z.array(z.string()).describe('A list of 2-3 likely alternative words.'),
+    reasoning: z.string().describe('A brief explanation for why this word was flagged (e.g., "Illegible handwriting").')
+  })).describe('A list of words that may need user clarification. If no words are ambiguous, return an empty array.')
 });
 export type ExtractTextFromImageOutput = z.infer<typeof ExtractTextFromImageOutputSchema>;
 
@@ -32,9 +38,13 @@ const prompt = ai.definePrompt({
   name: 'extractTextFromImagePrompt',
   input: {schema: ExtractTextFromImageInputSchema},
   output: {schema: ExtractTextFromImageOutputSchema},
-  prompt: `You are an expert OCR (Optical Character Recognition) engine. Your task is to extract all text from the provided image.
-  
-Be highly accurate in transcribing the text, including punctuation, numbers, and complex formatting. Pay special attention to difficult-to-read handwriting. Preserve the original line breaks and structure if possible.
+  prompt: `You are an expert OCR (Optical Character Recognition) engine with advanced contextual analysis capabilities. Your task is to extract all text from the provided image and provide clarifications for ambiguous words.
+
+Follow this two-step process:
+1.  **Contextual Analysis:** First, analyze the entire document to understand its context (e.g., is it a doctor's note, a shopping list, a legal document?). Based on this context, perform the most accurate transcription possible. Some words may be misspelled or unclear, but the overall context should help you make sense of them. Provide a one-sentence summary of this context.
+2.  **Interactive Word Clarification:** After transcribing, review the text and identify any words that are particularly hard to read, ambiguous, or where you had low confidence. For each of these words, provide a list of 2-3 likely alternative suggestions.
+
+Your final output must be in the specified JSON format.
 
 Image: {{media url=photoDataUri}}`,
 });

@@ -41,7 +41,7 @@ const features = [
 interface TranscriptionHistoryItem {
   id: string;
   image: string;
-  text: string;
+  result: ExtractTextFromImageOutput;
   timestamp: string;
 }
 
@@ -68,7 +68,7 @@ export default function HomePage() {
       const historyItem: TranscriptionHistoryItem = {
         id: new Date().toISOString(),
         image: imageUri,
-        text: result.extractedText,
+        result: result,
         timestamp: new Date().toISOString(),
       };
 
