@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { useToast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Progress } from '@/components/ui/progress';
 
 
 interface OcrResultsProps {
@@ -19,12 +20,31 @@ interface OcrResultsProps {
 export function OcrResults({ image, result, isLoading }: OcrResultsProps) {
   const { toast } = useToast();
   const [editedText, setEditedText] = useState('');
+  const [progress, setProgress] = useState(10);
 
   useEffect(() => {
     if (result?.extractedText) {
       setEditedText(result.extractedText);
     }
   }, [result]);
+
+   useEffect(() => {
+    if (isLoading) {
+      setProgress(10);
+      const timer = setInterval(() => {
+        setProgress(prevProgress => {
+          if (prevProgress >= 95) {
+            clearInterval(timer);
+            return prevProgress;
+          }
+          return prevProgress + 5;
+        });
+      }, 800);
+      return () => {
+        clearInterval(timer);
+      };
+    }
+  }, [isLoading]);
 
   const handleCopyToClipboard = () => {
     if (editedText) {
@@ -45,9 +65,16 @@ export function OcrResults({ image, result, isLoading }: OcrResultsProps) {
   const renderContent = () => {
     if (isLoading) {
       return (
-        <div className="space-y-6">
+        <div className="space-y-4">
           <Skeleton className="w-full aspect-video rounded-lg" />
-          <div className="space-y-2">
+          <div className="space-y-3">
+             <div className="text-center text-muted-foreground">
+                <p className="font-medium">Analyzing Image...</p>
+                <p className="text-sm">This may take a moment.</p>
+            </div>
+            <Progress value={progress} className="w-full" />
+          </div>
+          <div className="space-y-2 pt-4">
             <Skeleton className="h-7 w-48" />
             <Skeleton className="h-32 w-full" />
           </div>
