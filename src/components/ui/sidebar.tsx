@@ -4,6 +4,7 @@ import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
 import { PanelLeft } from "lucide-react"
+import { usePathname } from 'next/navigation'
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
@@ -69,6 +70,7 @@ const SidebarProvider = React.forwardRef<
   ) => {
     const isMobile = useIsMobile()
     const [openMobile, setOpenMobile] = React.useState(false)
+    const pathname = usePathname()
 
     // This is the internal state of the sidebar.
     // We use openProp and setOpenProp for control from outside the component.
@@ -95,6 +97,14 @@ const SidebarProvider = React.forwardRef<
         ? setOpenMobile((open) => !open)
         : setOpen((open) => !open)
     }, [isMobile, setOpen, setOpenMobile])
+    
+    // Close the mobile sidebar when the pathname changes.
+    React.useEffect(() => {
+        if (isMobile) {
+          setOpenMobile(false)
+        }
+    }, [pathname, isMobile])
+
 
     // Adds a keyboard shortcut to toggle the sidebar.
     React.useEffect(() => {
