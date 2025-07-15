@@ -1,0 +1,21 @@
+{
+  "name": "ClarifAI",
+  "short_name": "ClarifAI",
+  "description": "From Blurry To Clarity, Complexity To Simplicity. We Turn Chaos To Gloss Flawlessly.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
