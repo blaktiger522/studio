@@ -4,7 +4,9 @@ This is a NextJS starter in Firebase Studio.
 
 To get started, take a look at src/app/page.tsx.
 
-## Setting up your Vercel Deployment
+## Setting# Firebase Studio
+Setting# Firebase Studio
+ up your Vercel Deployment
 
 Your application uses the Google AI platform for its core image processing feature. For this to work on your live Vercel deployment, you must add your Google AI API key as an environment variable in Vercel.
 
