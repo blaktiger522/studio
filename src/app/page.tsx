@@ -131,7 +131,7 @@ export default function HomePage() {
         <div className="text-center space-y-2">
           <h1 className="text-3xl md:text-4xl font-bold text-primary dark:text-primary">ClarifAI</h1>
           <p className="text-muted-foreground text-base md:text-lg whitespace-pre-line">
-            {`From Blurry To Clarity
+            {`From Blurry To Brilliant 
 Complexity To Simplicity
 We Turn Chaos To Gloss Flawlessly`}
           </p>
